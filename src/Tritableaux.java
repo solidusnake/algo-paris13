@@ -244,4 +244,18 @@ public class Tritableaux {
 				t[deb+i] = temp[i];
 			}
 		}
+		
+		static void triFusion(int[] t, int deb, int fin)
+		{
+			int med;
+			
+			if(deb < fin)
+			{
+				med = (deb + fin)/2;
+				
+				triFusion(t, deb, med);
+				triFusion(t, med+1, fin);
+				fusion(t, deb, med, fin);
+			}
+		}
 }

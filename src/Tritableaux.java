@@ -209,5 +209,20 @@ public class Tritableaux {
 		static void fusion(int[] t, int deb, int med, int fin)
 		{
 			int [] temp = new int[fin -deb+1];
+			int p1 = deb;
+			int p2 = med+1;
+			int p = 0;
+			
+			while((p1 <= med) && (p2<=fin))
+			{
+				if(t[p1] < t[p2])
+				{
+					temp[p] = t[p1];
+				}else {
+					temp[p] = t[p2];
+				}
+				
+				p++;
+			}
 		}
 }

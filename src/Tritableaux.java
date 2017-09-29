@@ -191,4 +191,18 @@ public class Tritableaux {
 			
 			return indice;
 		}
+		
+		static void triBullePartiel(int[] t, int deb, int fin)
+		{
+			for(int p =deb; p<=fin; p++)
+			{
+				for(int i=deb; i<fin-p+deb; i++)
+				{
+					if(t[i] > t[i+1])
+					{
+						swap(t, i, i+1);
+					}
+				}
+			}
+		}
 }

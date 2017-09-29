@@ -205,4 +205,9 @@ public class Tritableaux {
 				}
 			}
 		}
+		
+		static void fusion(int[] t, int deb, int med, int fin)
+		{
+			int [] temp = new int[fin -deb+1];
+		}
 }

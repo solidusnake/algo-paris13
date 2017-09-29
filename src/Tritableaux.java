@@ -224,5 +224,24 @@ public class Tritableaux {
 				
 				p++;
 			}
+			
+			while(p1 <= med)
+			{
+				temp[p] = t[p1];
+				p++;
+				p1++;
+			}
+			
+			while(p2 <= med)
+			{
+				temp[p] = t[p2];
+				p++;
+				p2++;
+			}
+			
+			for(int i = 0; i< temp.length; i++)
+			{
+				t[deb+i] = temp[i];
+			}
 		}
 }

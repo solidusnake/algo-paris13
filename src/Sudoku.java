@@ -131,5 +131,28 @@ public class Sudoku {
 		
 		return respect;
 	}
-
+	
+	static boolean respectDesColonnes(int[][] s){
+		
+		boolean respect = true;
+		int colonne = -1;
+		int valeur,cpt;
+		
+		while(respect&&(colonne<8)){
+			colonne++;
+			valeur=0;
+			while(respect&&(valeur<9)){
+				valeur++;
+				cpt = 0;
+				for(int ligne=0;ligne<9;ligne++){
+					if(s[ligne][colonne]==valeur)
+					{
+						cpt++;
+					}
+				}
+				respect = cpt<2;
+			}
+		}
+		return respect;
+	}
 }

@@ -5,6 +5,11 @@ public class Sudoku {
 	
 	public static void main(String[] args) {
 		initSudoku();
+		sudoku[0][0] = 7;
+		//int[][] copie = copieSudoku(sudoku);
+		affichage(sudoku);
+		//affichage(copie);
+		System.out.println(respectDesLignes(sudoku));
 	}
 	
 	/**
@@ -56,8 +61,6 @@ public class Sudoku {
 		sudoku[7][5] = 3;
 		sudoku[8][3] = 7;
 		sudoku[8][6] = 3;
-		
-		affichage(sudoku);
 	}
 	
 	static void affichage(int[][] s){
@@ -83,6 +86,50 @@ public class Sudoku {
 			System.out.println(" |");
 		}
 		System.out.println(" |-----------------------|");
+	}
+	
+	static int[][] copieSudoku(int[][] s)
+	{
+		int tab [][] = new int [s.length][s.length];
+			
+		for(int i = 0; i < s.length; i++)
+		{
+			for(int j = 0; j < s[i].length; j++)
+			{
+				tab[i][j] = s[i][j];
+			}
+		}
+		
+		return tab;
+	}
+	
+	static boolean respectDesLignes(int [][] s)
+	{
+		boolean respect = true;
+		int ligne = -1;
+		int valeur, cpt;
+		
+		while(respect&&(ligne < 8))
+		{
+			ligne++;
+			valeur = 0;
+			while(respect&&(valeur < 9))
+			{
+				valeur++;
+				cpt = 0;
+				for(int col = 0; col < 9; col++)
+				{
+					if(s[ligne][col] == valeur)
+					{
+						cpt++;
+					}
+				}
+				respect = cpt <2;
+				
+			}
+		}
+		
+		return respect;
 	}
 
 }

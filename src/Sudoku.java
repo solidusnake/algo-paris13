@@ -5,9 +5,9 @@ public class Sudoku {
     
     public static void main(String[] args) {
         initSudoku();
-        //sudoku[0][0] = 3;
         affichage(sudoku);
-        System.out.println(respectDesCarres(sudoku));
+        int[][] solution = resolution(sudoku);
+        affichage(solution);
     }
     
     static void initSudoku(){
@@ -82,9 +82,9 @@ public class Sudoku {
         System.out.println(" |-----------------------|");
     }
     
-    /*static boolean respectDesRegles(int[][] s){
-        
-    }*/
+    static boolean respectDesRegles(int[][] s){
+        return respectDesLignes(s)&&respectDesColonnes(s)&&respectDesCarres(s);
+    }
     
     static boolean respectDesLignes(int[][] s){
         boolean respect = true;
@@ -144,6 +144,36 @@ public class Sudoku {
             }
         }
         return true;
+    }
+    
+    static int[][] resolution(int[][] s){
+        int[][] result = null;
+        // recherche d'une case non remplie
+        int ligne = -1;
+        int colonne = -1;
+        for(int i=0;i<9;i++){
+            for(int j=0;j<9;j++){
+                if(s[i][j]==0){
+                    ligne = i;
+                    colonne = j;
+                }
+            }
+        }
+        if ((ligne!=-1)&&(colonne!=-1)){
+            // on teste des valeurs pour remplir la case
+            int[][] copie = copieSudoku(s);
+            int valeur = 0;
+            while((result==null)&&(valeur<9)){
+                valeur++;
+                copie[ligne][colonne] = valeur;
+                if(respectDesRegles(copie))
+                    result = resolution(copie);
+            }
+        }
+        else {
+            result = s;
+        }
+        return result;
     }
     
 }

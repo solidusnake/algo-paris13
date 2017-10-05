@@ -56,6 +56,33 @@ public class Sudoku {
 		sudoku[7][5] = 3;
 		sudoku[8][3] = 7;
 		sudoku[8][6] = 3;
+		
+		affichage(sudoku);
+	}
+	
+	static void affichage(int[][] s){
+		for(int i=0;i<s.length;i++){
+			if(i%3==0)
+			{
+				System.out.println(" |-----------------------|");
+			}
+			for(int j=0;j<s[i].length;j++){
+				if(j%3==0)
+					{
+						System.out.print(" |");
+					}
+				if(s[i][j]!=0)
+					{
+						System.out.print(" "+s[i][j]);
+					}
+				else
+					{
+						System.out.print("  ");
+					}
+			}
+			System.out.println(" |");
+		}
+		System.out.println(" |-----------------------|");
 	}
 
 }
